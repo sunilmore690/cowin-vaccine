@@ -11,7 +11,7 @@ export default function NotifyModal({ isOpen = false, pincode, handleClose }) {
   async function handleSubmit() {
     try {
       setRes({});
-      let res = await axios.post("/cowin/subscribe", payload);
+      let res = await axios.post("https://stakenote.xyz/cowin/subscribe", payload);
       console.log("res", res);
       setRes(res)
     } catch (e) {
