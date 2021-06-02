@@ -8,6 +8,9 @@ export default function NotifyModal({ isOpen = false, pincode, handleClose }) {
   function handleInputChange(e) {
     setPayload({ ...payload, [e.target.name]: e.target.value });
   }
+  React.useEffect(()=>{
+    setPayload({...payload,pincode})
+  },[pincode])
   async function handleSubmit() {
     try {
       setRes({});
