@@ -202,9 +202,7 @@ export default function Login() {
           </a>
           <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
             <div class="form-group">
-              <label
-                style={{ fontWeight: searchBy === "pincode" ? 500 : 300 }}
-              >
+              <label style={{ fontWeight: searchBy === "pincode" ? 500 : 300 }}>
                 <input
                   type="radio"
                   value="pincode"
@@ -334,8 +332,8 @@ export default function Login() {
                 Next{" "}
               </span>
             </div>
-            <div className="table-responsive">
-              <table class="table table-striped ">
+            <div style={{ overflowX: "scroll" }}>
+              <table style={{ maxWidth: "100vw" }} className="table">
                 <thead>
                   <tr>
                     <th></th>
@@ -347,17 +345,31 @@ export default function Login() {
                 <tbody>
                   {filteredcenters.map((center) => (
                     <tr id={"abc" + center.center_id} className="got-result">
-                      <td style={{ width: "100px" }}>
-                        <b>
-                          {center.name} &nbsp;
+                      <td style={{ width: "500px" }}>
+                        <p>
+                          <b>{center.name}</b> &nbsp;
                           {center.fee_type === "Free" ? null : (
-                            <span class="label label-primary">PAID</span>
+                            <>
+                              <span className="label label-primary">PAID</span>
+                            </>
                           )}
-                        </b>
+                        </p>
                         <br />
                         {center.address},{center.block_name},
                         {center.district_name},{center.state_name} -{" "}
                         {center.pincode}
+                        <br />
+                        {center.vaccine_fees &&
+                          center.vaccine_fees.map((vaccine_fee) => {
+                            return (
+                              <>
+                                <span className="label label-info">
+                                  {vaccine_fee.vaccine}
+                                </span>
+                                : <b>Rs.{vaccine_fee.fee}</b>
+                              </>
+                            );
+                          })}
                       </td>
                       {[...Array(7)].map((e, i) => {
                         let obj = _.findWhere(center.sessions, {
@@ -373,13 +385,24 @@ export default function Login() {
                           );
                         }
                         return (
-                          <td key={i + "session"}>
+                          <td key={i + "session"} style={{minWidth:'100px'}}>
                             {obj.available_capacity == 0 ? (
                               <span className="label label-danger">Booked</span>
                             ) : (
-                              <span className="label label-success">
-                                {obj.available_capacity}
-                              </span>
+                              <>
+                                <span className="label label-info">
+                                  {" "}
+                                  Dose 1
+                                </span>{" "}
+                                {obj.available_capacity_dose1}
+                                <br />
+                                <span className="label label-info">
+                                  {" "}
+                                  Dose 2
+                                </span>{" "}
+                                {obj.available_capacity_dose2}
+                                <br />
+                              </>
                             )}
                             <br />
                             <span style={{ colorName: "red" }}>
@@ -397,6 +420,16 @@ export default function Login() {
                                 </span>
                               )}
                             </span>
+                            <br></br>
+                            {obj.available_capacity > 0 ? (
+                              <a
+                                href="https://selfregistration.cowin.gov.in/"
+                                target="_blank"
+                                className="btn btn-xs btn-success"
+                              >
+                                Book Now
+                              </a>
+                            ) : null}
                           </td>
                         );
                       })}
