@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-let filters = ['Age 18+','Age 45+','COVISHIELD','COVAXIN','Free','Paid']
+let filters = ['Age 18+','Age 45+','COVISHIELD','COVAXIN','Free','Paid','Sputnik V']
 export default function filter({handleFilterChange,propfilters=[]}){
     const [filter, setFilter] = React.useState(propfilters);
     function handleFilterselection(val){

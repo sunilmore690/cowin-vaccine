@@ -124,7 +124,11 @@ export default function Login() {
          (session) => session.min_age_limit == 45
        );
      }
-     if (filters.includes("COVISHIELD") && filters.includes("COVAXIN")) {
+     if (
+       filters.includes("COVISHIELD") &&
+       filters.includes("COVAXIN") &&
+       filters.includes("Sputnik V")
+     ) {
      } else if (filters.includes("COVISHIELD")) {
        center.sessions = center.sessions.filter(
          (session) => session.vaccine === "COVISHIELD"
@@ -132,6 +136,10 @@ export default function Login() {
      } else if (filters.includes("COVAXIN")) {
        center.sessions = center.sessions.filter(
          (session) => session.vaccine === "COVAXIN"
+       );
+     } else if (filters.includes("Sputnik V")) {
+       center.sessions = center.sessions.filter(
+         (session) => session.vaccine.toLowerCase() === "sputnik v"
        );
      }
      return center;
@@ -191,8 +199,8 @@ export default function Login() {
         pincode={pincode}
       />
       <div className="row">
-        <div className="col-sm-6 col-xs-12 col-sm-offset-3">
-          <h3>COWIN - Check your nearest vaccination center</h3>
+        <div className='col-sm-6 col-md-6 col-xs-12 col-sm-offset-2' style={{position:'fixed',backgroundColor:'white',zIndex:1000}}>
+          <h3>Govaccinate - Check your nearest vaccination center</h3>
           <label>Developed By: Sunil More</label>{" "}
           <a
             href="https://github.com/sunilmore690/cowin-vaccine"
@@ -200,7 +208,9 @@ export default function Login() {
           >
             Repo
           </a>
-          <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
+        </div>
+        <div className="col-sm-6 col-xs-12 col-sm-offset-3">
+          <form onSubmit={handleSubmit} style={{ marginTop: "150px" }}>
             <div class="form-group">
               <label style={{ fontWeight: searchBy === "pincode" ? 500 : 300 }}>
                 <input
@@ -385,7 +395,7 @@ export default function Login() {
                           );
                         }
                         return (
-                          <td key={i + "session"} style={{minWidth:'100px'}}>
+                          <td key={i + "session"} style={{ minWidth: "100px" }}>
                             {obj.available_capacity == 0 ? (
                               <span className="label label-danger">Booked</span>
                             ) : (
