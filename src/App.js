@@ -299,7 +299,7 @@ export default function Login() {
             >
               Search
             </button>
-            {searchBy == "pincode" ? (
+            
               <button
                 className="btn btn-default"
                 onClick={(e) => {
@@ -310,7 +310,7 @@ export default function Login() {
               >
                 Notify when slot avaible
               </button>
-            ) : null}
+            
             <label style={{ margin: "10px" }}>
               <input
                 type="checkbox"
