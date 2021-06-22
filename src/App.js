@@ -306,7 +306,7 @@ export default function Login() {
                   e.preventDefault();
                   handleNotify();
                 }}
-                disabled={(pincode || "").length !== 6}
+                
               >
                 Notify when slot avaible
               </button>
