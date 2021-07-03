@@ -1,10 +1,11 @@
-import { StrictMode } from "react";
+import 'regenerator-runtime/runtime'
+
+import React from 'react'
+import { StrictMode }from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  useHistory,
 } from "react-router-dom";
 
 import App from "./App";
