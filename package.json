@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "parcel ./public/index.html --open",
-    "build": "parcel build  ./public/index.html -d dist",
+    "build": "parcel build  ./public/index.html -d build",
     "test": "jest --watchall"
   },
   "browserslist": [
