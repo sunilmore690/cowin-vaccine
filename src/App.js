@@ -200,7 +200,7 @@ export default function Login() {
       />
       <div className="row">
         <div className='col-sm-6 col-md-6 col-xs-12 col-sm-offset-2' style={{position:'fixed',backgroundColor:'white',zIndex:1000}}>
-          <h3>Govaccinate - Check your nearest vaccination center</h3>
+          <h1>Govaccinate - Check your nearest vaccination center</h1>
           <label>Developed By: Sunil More</label>{" "}
           <a
             href="https://github.com/sunilmore690/cowin-vaccine"
