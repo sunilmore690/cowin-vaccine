@@ -21,7 +21,7 @@ export default function Login() {
   const [state, setState] = React.useState(query.get('state'));
   const [district, setDistrict] = React.useState(query.get("district"));
   const [pincode, setPincode] = React.useState(query.get('pincode'));
-  const [searchBy, setSearchBy] = React.useState(query.get("searchBy") || 'pincode');
+  const [searchBy, setSearchBy] = React.useState(query.get("searchBy") || 'district');
   const [date, setDate] = React.useState(moment().format("YYYY-MM-DD"));
   const [result, setResult] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -210,7 +210,7 @@ export default function Login() {
           </a>
         </div>
         <div className="col-sm-6 col-xs-12 col-sm-offset-3">
-          <form onSubmit={handleSubmit} style={{ marginTop: "150px" }}>
+          <form onSubmit={handleSubmit} style={{ marginTop: "200px" }}>
             <div class="form-group">
               <label style={{ fontWeight: searchBy === "pincode" ? 500 : 300 }}>
                 <input
