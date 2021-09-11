@@ -199,7 +199,10 @@ export default function Login() {
         pincode={pincode}
       />
       <div className="row">
-        <div className='col-sm-6 col-md-6 col-xs-12 col-sm-offset-2' style={{position:'fixed',backgroundColor:'white',zIndex:1000}}>
+        <div
+          className="col-sm-6 col-md-6 col-xs-12 col-sm-offset-2"
+          style={{ position: "fixed", backgroundColor: "white", zIndex: 1000 }}
+        >
           <h1>Govaccinate - Check your nearest vaccination center</h1>
           <label>Developed By: Sunil More</label>{" "}
           <a
@@ -216,6 +219,7 @@ export default function Login() {
                 <input
                   type="radio"
                   value="pincode"
+                  name="searchBy"
                   checked={searchBy === "pincode"}
                   onChange={handleSearchByChange}
                 />{" "}
@@ -227,6 +231,7 @@ export default function Login() {
                 <input
                   type="radio"
                   value="district"
+                  name="searchBy"
                   style={{ marginLeft: "10px" }}
                   checked={searchBy === "district"}
                   onChange={handleSearchByChange}
@@ -242,6 +247,7 @@ export default function Login() {
                     type="text"
                     class="form-control"
                     value={state}
+                    id="state"
                     onChange={(e) => setState(e.target.value)}
                   >
                     <option value="">--Select State--</option>
@@ -255,6 +261,7 @@ export default function Login() {
                   <select
                     type="text"
                     class="form-control"
+                    id="district"
                     value={district}
                     onChange={(e) => setDistrict(e.target.value)}
                   >
@@ -274,6 +281,7 @@ export default function Login() {
                   type="text"
                   className="form-control"
                   value={pincode}
+                  id='pincode'
                   onChange={(e) => setPincode(e.target.value)}
                 />
               </div>
@@ -291,6 +299,7 @@ export default function Login() {
 
             <button
               type="submit"
+              id='searchBtn'
               className="btn btn-success"
               style={{ marginRight: "10px" }}
               disabled={
@@ -299,21 +308,21 @@ export default function Login() {
             >
               Search
             </button>
-            
-              <button
-                className="btn btn-default"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNotify();
-                }}
-                
-              >
-                Notify when slot avaible
-              </button>
-            
+
+            <button
+              className="btn btn-default"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNotify();
+              }}
+            >
+              Notify when slot avaible
+            </button>
+
             <label style={{ margin: "10px" }}>
               <input
                 type="checkbox"
+                name="onlyAvailableSlot"
                 defaultChecked={checked}
                 onChange={() => setChecked(!checked)}
               />
